@@ -1,6 +1,15 @@
 (function () {
   "use strict";
 
+  var floatingHeader = document.querySelector(".header-floating");
+  if (floatingHeader) {
+    var updateHeaderState = function () {
+      floatingHeader.classList.toggle("is-scrolled", window.scrollY > 40);
+    };
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+  }
+
   var burger = document.getElementById("navBurger");
   if (burger) {
     burger.addEventListener("click", function () {

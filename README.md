@@ -16,6 +16,11 @@ Esboço: HTML + CSS + JS puro, sem backend e sem cadastro (fácil de hospedar em
 - `js/common.js` — menu mobile e botão de idioma (PT/EN), compartilhado entre as páginas
 - `js/main.js` — lógica específica da home (grid, pílulas de contagem, legendas)
 - `js/chacara.js` — lógica específica da página de chácara individual
+- `assets/images/` — fotos reais da região de Pingo-d'Água/MG, todas de licença aberta (Wikimedia Commons, CC BY / CC BY-SA), com crédito no rodapé do site. **Nenhuma é foto das chácaras em si** (ainda não existem fotos do empreendimento) — são fotos ilustrativas da cidade e da região, usadas até que as fotos reais de cada chácara fiquem prontas
+
+## Sobre as fotos usadas
+
+Como o empreendimento ainda não tem fotos próprias, o hero, a faixa panorâmica, a galeria e o CTA final usam fotos reais e de licença aberta da região (cidade de Pingo-d'Água, Rio Doce, Ponte Queimada — todas CC BY/CC BY-SA, créditos no rodapé). Nenhuma é literalmente da Lagoa Tiririca ou das chácaras — são ilustrativas, claramente marcadas como tal. Assim que houver fotos e vídeos reais do empreendimento, é só trocar os arquivos em `assets/images/` (mesmos nomes) e remover os avisos "ilustrativo" do texto.
 
 ## Como atualizar a disponibilidade
 

@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<header class="site-header" id="topo">
+<header class="site-header header-floating" id="topo">
   <div class="container header-inner">
     <a href="#topo" class="brand">
       <span class="brand-mark" aria-hidden="true">
@@ -51,41 +51,16 @@
 
 <main>
 
-  <section class="hero" id="hero">
-    <div class="hero-illustration" aria-hidden="true">
-      <svg viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#4a7a52"/>
-            <stop offset="1" stop-color="#1c3420"/>
-          </linearGradient>
-          <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#6c9c93"/>
-            <stop offset="1" stop-color="#33554f"/>
-          </linearGradient>
-          <linearGradient id="heroFade" x1="0" y1="0" x2="1" y2="0.3">
-            <stop offset="0" stop-color="#101d13" stop-opacity="0.92"/>
-            <stop offset="0.55" stop-color="#101d13" stop-opacity="0.45"/>
-            <stop offset="1" stop-color="#101d13" stop-opacity="0.08"/>
-          </linearGradient>
-        </defs>
-        <rect width="1200" height="760" fill="url(#skyGrad)"/>
-        <path d="M-50 420 C 150 380, 250 470, 420 400 C 600 330, 720 430, 900 380 C 1050 340, 1150 400, 1260 370 L1260 760 L-50 760 Z" fill="#294a30"/>
-        <path d="M-50 480 C 120 520, 260 500, 400 560 C 560 630, 700 540, 880 600 C 1000 640, 1120 600, 1260 630 L1260 760 L-50 760 Z" fill="url(#waterGrad)" opacity="0.9"/>
-        <path d="M-50 470 C 150 500, 300 480, 450 540 C 620 600, 760 520, 900 570" fill="none" stroke="#e7e2cf" stroke-width="2" opacity="0.3"/>
-        <g fill="#16271b" opacity="0.85">
-          <path d="M120 420 L150 350 L180 420 Z"/>
-          <path d="M260 440 L295 360 L330 440 Z"/>
-          <path d="M980 400 L1015 330 L1050 400 Z"/>
-          <path d="M1100 430 L1130 365 L1160 430 Z"/>
-        </g>
-        <rect width="1200" height="760" fill="url(#heroFade)"/>
-      </svg>
+  <section class="hero hero-photo" id="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="assets/images/hero-rio-doce.jpg" alt="">
+      <div class="hero-overlay"></div>
     </div>
 
     <div class="container hero-content">
       <p class="eyebrow" data-pt="Chácaras" data-en="Country Estates">Chácaras</p>
       <h1 data-pt="Recanto da Lagoa" data-en="Recanto da Lagoa">Recanto da Lagoa</h1>
+      <span class="hero-rule" aria-hidden="true"></span>
       <p class="hero-sub" data-pt="Natureza, privacidade e qualidade de vida em Pingo-d'Água, às margens da Lagoa Tiririca."
          data-en="Nature, privacy and quality of life in Pingo-d'Água, on the shores of Lagoa Tiririca.">
         Natureza, privacidade e qualidade de vida em Pingo-d'Água, às margens da Lagoa Tiririca.
@@ -138,6 +113,11 @@
         <span data-pt="Ideal para moradia, lazer ou investimento" data-en="Ideal for living, leisure or investment">Ideal para moradia, lazer ou investimento</span>
       </div>
     </div>
+  </section>
+
+  <section class="photo-band">
+    <img src="assets/images/pingodagua-vista1.jpg" alt="Vista de Pingo-d'Água, Minas Gerais">
+    <p class="photo-band-caption" data-pt="Pingo-d'Água, Minas Gerais" data-en="Pingo-d'Água, Minas Gerais">Pingo-d'Água, Minas Gerais</p>
   </section>
 
   <section class="section" id="sobre">
@@ -254,11 +234,24 @@
         Em breve: fotos aéreas, vídeos e imagens de cada chácara. Por enquanto, veja as categorias que serão exibidas aqui.
       </p>
       <div class="gallery-grid">
-        <div class="gallery-tile" style="--hue:140"><span data-pt="Vista aérea" data-en="Aerial view">Vista aérea</span></div>
-        <div class="gallery-tile" style="--hue:170"><span data-pt="Lagoa Tiririca" data-en="Lagoa Tiririca">Lagoa Tiririca</span></div>
-        <div class="gallery-tile" style="--hue:110"><span data-pt="Acessos" data-en="Access roads">Acessos</span></div>
-        <div class="gallery-tile" style="--hue:190"><span data-pt="Estrutura" data-en="Structure">Estrutura</span></div>
+        <div class="gallery-tile has-photo">
+          <img src="assets/images/pingodagua-vista2.jpg" alt="Vista de Pingo-d'Água, MG">
+          <span data-pt="Pingo-d'Água, MG" data-en="Pingo-d'Água, MG">Pingo-d'Água, MG</span>
+        </div>
+        <div class="gallery-tile has-photo">
+          <img src="assets/images/lagoa-generica.jpg" alt="Represa na região — imagem ilustrativa">
+          <span data-pt="Imagem ilustrativa da região" data-en="Illustrative photo of the region">Imagem ilustrativa da região</span>
+        </div>
+        <div class="gallery-tile has-photo">
+          <img src="assets/images/acesso-ponte.jpg" alt="Ponte Queimada, acesso regional próximo a Pingo-d'Água">
+          <span data-pt="Acesso regional (Ponte Queimada)" data-en="Regional access road (Ponte Queimada)">Acesso regional (Ponte Queimada)</span>
+        </div>
+        <div class="gallery-tile" style="--hue:190"><span data-pt="Estrutura — em breve" data-en="Structure — coming soon">Estrutura — em breve</span></div>
       </div>
+      <p class="map-disclaimer" data-pt="Fotos ilustrativas da região de Pingo-d'Água/MG. Fotos reais de cada chácara em breve."
+         data-en="Illustrative photos of the Pingo-d'Água/MG region. Real photos of each estate coming soon.">
+        Fotos ilustrativas da região de Pingo-d'Água/MG. Fotos reais de cada chácara em breve.
+      </p>
     </div>
   </section>
 
@@ -298,6 +291,9 @@
   </section>
 
   <section class="cta-final" id="contato">
+    <div class="cta-final-bg" aria-hidden="true">
+      <img src="assets/images/hero-rio-doce.jpg" alt="">
+    </div>
     <div class="container cta-final-inner">
       <div>
         <span class="tag tag-on-dark" data-pt="Contato" data-en="Contact">Contato</span>
@@ -331,6 +327,9 @@
     Imagens, ilustrações e o mapa de disponibilidade deste site são meramente ilustrativos. Fotos, vídeos e tour 360° reais serão adicionados conforme a captação do material do empreendimento.
   </p>
   <p class="footer-note" data-pt="Site em construção — esboço inicial." data-en="Website under construction — initial draft.">Site em construção — esboço inicial.</p>
+  <p class="footer-credits">
+    Fotos: HVL (CC BY 4.0) e Donizete C. da Silva (CC BY 3.0) — <a href="https://commons.wikimedia.org/wiki/Category:Pingo-d%27%C3%81gua" target="_blank" rel="noopener">Wikimedia Commons</a>
+  </p>
 </footer>
 
 <a class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"
