@@ -1,20 +1,31 @@
 # Chácaras Recanto da Lagoa
 
-Site de divulgação do loteamento **Chácaras Recanto da Lagoa**, em Pingo-d'Água/MG, às margens da Lagoa Tiririca — 8 lotes à venda.
+Site de divulgação do loteamento **Chácaras Recanto da Lagoa**, em Pingo-d'Água/MG, às margens da Lagoa Tiririca.
 
-Esboço inicial: HTML + CSS + JS puro, sem backend (fácil de hospedar em qualquer lugar, ex. GitHub Pages, Netlify, Vercel).
+14 chácaras de 20.000 m² (2 hectares) cada — 9 disponíveis, 5 vendidas. Valores a partir de R$ 280.000.
+
+Esboço: HTML + CSS + JS puro, sem backend e sem cadastro (fácil de hospedar em qualquer lugar, ex. GitHub Pages, Netlify, Vercel). Contato é só via WhatsApp.
 
 ## Estrutura
 
-- `index.html` — página única com todas as seções (hero, sobre, lotes, tour virtual, localização, contato)
-- `css/styles.css` — estilo
-- `js/main.js` — monta os 8 cards de lote, menu mobile, botão PT/EN e o formulário de contato (abre o WhatsApp já com a mensagem preenchida)
+- `index.html` — página inicial: hero, apresentação, grid das 14 chácaras, mapa interativo de disponibilidade, tour virtual (placeholder), galeria (placeholder), valores, localização e contato
+- `chacara.html?id=N` — página individual de cada chácara (área, status, valor, posição no mapa, galeria, tour 360°, WhatsApp). Uma única página-modelo serve as 14 chácaras via parâmetro `id` na URL
+- `css/styles.css` — estilo (paleta verde/dourado, inspirada em sites de loteamento de alto padrão)
+- `js/data.js` — **fonte única de verdade**: dados do empreendimento e status de cada chácara (disponível/vendida). Editar aqui quando uma unidade for vendida
+- `js/plotmap.js` — gera o croqui esquemático (SVG) das 14 chácaras coloridas por status, usado na home (mapa completo) e na página individual (mini-mapa com destaque)
+- `js/common.js` — menu mobile e botão de idioma (PT/EN), compartilhado entre as páginas
+- `js/main.js` — lógica específica da home (grid, pílulas de contagem, legendas)
+- `js/chacara.js` — lógica específica da página de chácara individual
+
+## Como atualizar a disponibilidade
+
+Edite o array `CHACARAS` em [js/data.js](js/data.js): mude o `status` de `"disponivel"` para `"vendida"` (ou vice-versa). O mapa, a grid, as pílulas e as páginas individuais atualizam sozinhos.
 
 ## Pendências (próximos passos)
 
-- Trocar as ilustrações placeholder pelas fotos reais de cada lote
-- Adicionar o tour 360°/3D de cada chácara (seção `#tour` já preparada para receber)
-- Metragem e valor de cada lote
+- Fotos reais e tour 360°/3D de cada chácara (estilo Street View) — seções já preparadas para receber
+- Imagens aéreas e vídeos na galeria
+- Condições de parcelamento (hoje "consulte nossa equipe")
 - Contato da corretora Marina
 - Domínio e hospedagem definitivos
 
