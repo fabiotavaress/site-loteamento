@@ -60,28 +60,46 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 
 /* ---------- hero ---------- */
 .hero{
-  position:relative;min-height:100vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:flex-end;overflow:hidden;
-  background:#132018;padding-bottom:70px;
+  /* --s = how many screen px one px of the cover image takes (the image is 1672x941, "cover", anchored at the top).
+     It lets the captions start right under the logo printed in the image, whatever the screen size. */
+  --s:max(100vw / 1672, 100vh / 941);
+  position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  overflow:hidden;background:#132018;padding:calc(236 * var(--s) + 5.5vh) 0 110px;
 }
 .hero-bg{position:absolute;inset:0;z-index:0;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 8%;}
-/* soft shade at the bottom so the caption reads over the trees */
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+/* gentle shade behind the captions so they read over the clouds */
 .hero::after{
-  content:"";position:absolute;left:0;right:0;bottom:0;height:38%;z-index:0;pointer-events:none;
-  background:linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0));
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 58% 30% at 50% calc(236 * var(--s) + 17vh),rgba(8,14,10,0.42),rgba(8,14,10,0) 72%);
 }
 
-.hero-tagline{
-  position:relative;z-index:1;color:#fff;font-weight:400;
-  font-size:1.1rem;line-height:1.8;letter-spacing:.2em;text-transform:uppercase;max-width:760px;text-wrap:balance;
-  text-align:center;margin:0 24px 28px;text-shadow:0 1px 3px rgba(0,0,0,0.5),0 2px 16px rgba(0,0,0,0.55);
+.hero-copy{
+  position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:clamp(26px,5vh,52px);
+  padding:0 24px;text-align:center;color:#fff;
+  text-shadow:0 1px 2px rgba(0,0,0,0.35),0 2px 18px rgba(0,0,0,0.45);
 }
+.hero-title{
+  margin:0;font-family:var(--font-head);font-weight:600;font-size:clamp(1.35rem,1.9vw,1.9rem);line-height:1.25;
+  letter-spacing:.08em;text-transform:uppercase;text-wrap:balance;
+}
+.hero-facts{display:flex;align-items:center;justify-content:center;gap:30px;}
+.hero-place{
+  margin:0;text-align:right;font-size:.78rem;font-weight:500;line-height:1.8;letter-spacing:.2em;text-transform:uppercase;
+}
+.hero-size{
+  margin:0;display:flex;align-items:center;gap:12px;padding:6px 6px;text-transform:uppercase;
+  border-top:1px solid rgba(255,255,255,0.85);border-bottom:1px solid rgba(255,255,255,0.85);
+}
+.hero-size-label{font-size:.72rem;font-weight:500;letter-spacing:.2em;}
+.hero-size strong{font-size:clamp(2rem,2.6vw,2.6rem);font-weight:300;line-height:1.1;letter-spacing:.03em;}
+.hero-size-unit{align-self:flex-start;margin-top:.45em;font-size:.95rem;font-weight:400;letter-spacing:.04em;}
 
 .scroll-cue{
-  position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;
-  color:rgba(255,255,255,0.75);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
-  animation:bob 2.4s infinite ease-in-out;
+  position:absolute;z-index:1;left:0;right:0;bottom:28px;width:max-content;margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:rgba(255,255,255,0.8);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  text-shadow:0 1px 6px rgba(0,0,0,0.5);animation:bob 2.4s infinite ease-in-out;
 }
 @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
 
@@ -243,8 +261,14 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
 }
 
 @media (max-width:700px){
-  .hero{min-height:auto;padding-top:0;padding-bottom:40px;}
+  /* phone: the cover shows whole, captions go underneath on the dark green */
+  .hero{min-height:auto;padding:0 0 40px;}
+  .hero::after{display:none;}
   .hero-bg{position:relative;inset:auto;height:auto;}
   .hero-bg img{height:auto;object-fit:contain;}
-  .hero-tagline{margin-top:24px;font-size:.8rem;letter-spacing:.16em;}
+  .hero-copy{margin-top:32px;gap:24px;text-shadow:none;}
+  .hero-title{font-size:1.35rem;}
+  .hero-facts{flex-direction:column;gap:18px;}
+  .hero-place{text-align:center;font-size:.7rem;letter-spacing:.16em;}
+  .scroll-cue{position:static;margin-top:32px;}
 }
