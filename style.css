@@ -60,30 +60,36 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 
 /* ---------- hero ---------- */
 .hero{
-  /* --s = how many screen px one px of the cover image takes (the image is 1672x941, "cover", anchored at the top).
-     It lets the captions start right under the logo printed in the image, whatever the screen size. */
-  --s:max(100vw / 1672, 100vh / 941);
-  position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;
-  overflow:hidden;background:#132018;padding:calc(236 * var(--s) + 5.5vh) 0 110px;
+  position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;
+  overflow:hidden;background:#132018;padding:9vh 0 110px;
 }
 .hero-bg{position:absolute;inset:0;z-index:0;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center top;}
-/* gentle shade behind the captions so they read over the clouds */
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center 40%;
+  transform-origin:55% 55%;will-change:transform;
+  animation:heroZoom 16s ease-in-out infinite alternate;  /* slow zoom in, then back out */
+}
+@keyframes heroZoom{from{transform:scale(1);}to{transform:scale(1.12);}}
+/* light shade at the top (logo + captions) so the white text always reads over the sky */
 .hero::after{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:radial-gradient(ellipse 58% 30% at 50% calc(236 * var(--s) + 17vh),rgba(8,14,10,0.42),rgba(8,14,10,0) 72%);
+  background:
+    radial-gradient(ellipse 55% 26% at 50% 36%,rgba(8,12,10,0.38),rgba(8,12,10,0) 75%),
+    linear-gradient(to bottom,rgba(8,12,10,0.3),rgba(8,12,10,0) 55%);
 }
 
 .hero-copy{
-  position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:clamp(26px,5vh,52px);
+  position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;
   padding:0 24px;text-align:center;color:#fff;
   text-shadow:0 1px 2px rgba(0,0,0,0.35),0 2px 18px rgba(0,0,0,0.45);
 }
+.hero-brand{margin:0;line-height:0;}
+.hero-brand img{width:clamp(210px,19vw,300px);height:auto;filter:drop-shadow(0 2px 14px rgba(0,0,0,0.35));}
 .hero-title{
-  margin:0;font-family:var(--font-head);font-weight:600;font-size:clamp(1.35rem,1.9vw,1.9rem);line-height:1.25;
-  letter-spacing:.08em;text-transform:uppercase;text-wrap:balance;
+  margin:clamp(44px,8vh,96px) 0 0;font-family:var(--font-head);font-weight:600;font-size:clamp(1.35rem,1.9vw,1.9rem);
+  line-height:1.25;letter-spacing:.08em;text-transform:uppercase;text-wrap:balance;
 }
-.hero-facts{display:flex;align-items:center;justify-content:center;gap:30px;}
+.hero-facts{display:flex;align-items:center;justify-content:center;gap:30px;margin-top:clamp(24px,4.5vh,46px);}
 .hero-place{
   margin:0;text-align:right;font-size:.78rem;font-weight:500;line-height:1.8;letter-spacing:.2em;text-transform:uppercase;
 }
@@ -213,7 +219,7 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
   .js [data-reveal]{opacity:1;transform:none;transition:none;}
-  .scroll-cue{animation:none;}
+  .scroll-cue,.hero-bg img{animation:none;}
 }
 
 /* ---------- responsive ---------- */
@@ -261,14 +267,16 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
 }
 
 @media (max-width:700px){
-  /* phone: the cover shows whole, captions go underneath on the dark green */
-  .hero{min-height:auto;padding:0 0 40px;}
-  .hero::after{display:none;}
-  .hero-bg{position:relative;inset:auto;height:auto;}
-  .hero-bg img{height:auto;object-fit:contain;}
-  .hero-copy{margin-top:32px;gap:24px;text-shadow:none;}
-  .hero-title{font-size:1.35rem;}
-  .hero-facts{flex-direction:column;gap:18px;}
+  /* phone: full-screen photo, everything stacked and centred */
+  .hero{padding:12vh 0 100px;}
+  .hero-bg img{object-position:58% center;}
+  .hero::after{
+    background:
+      radial-gradient(ellipse 90% 30% at 50% 42%,rgba(8,12,10,0.42),rgba(8,12,10,0) 75%),
+      linear-gradient(to bottom,rgba(8,12,10,0.35),rgba(8,12,10,0.05) 60%);
+  }
+  .hero-brand img{width:200px;}
+  .hero-title{margin-top:9vh;font-size:1.3rem;}
+  .hero-facts{flex-direction:column;gap:18px;margin-top:4vh;}
   .hero-place{text-align:center;font-size:.7rem;letter-spacing:.16em;}
-  .scroll-cue{position:static;margin-top:32px;}
 }
