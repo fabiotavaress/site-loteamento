@@ -143,11 +143,7 @@ h1,h2,h3{margin:0;font-weight:inherit;}
   white-space:nowrap;
 }
 
-/* availability: plan + legend */
-.plan{margin-top:72px;display:flex;flex-direction:column;align-items:center;gap:28px;}
-.plan-map{margin:0 auto;width:100%;max-width:460px;background:#fff;padding:24px;box-shadow:0 22px 50px -26px rgba(19,32,24,0.4);}
-.plan-map img{width:100%;height:auto;}
-.plan-map object{width:100%;aspect-ratio:1013 / 1552;display:block;}
+/* availability map: full-bleed, no card */
 .legend-title{
   display:flex;align-items:center;gap:10px;margin:0 0 14px;
   font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text);
@@ -166,12 +162,50 @@ a.lot{
 }
 a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--green-900);color:#fff;transform:translateY(-2px);}
 .lot-sold{background:var(--sold);border:1px solid var(--sold-line);color:var(--sold-ink);opacity:.8;}
-.plan-legend{text-align:center;max-width:480px;}
-.legend-key{list-style:none;margin:0 0 14px;padding:0;display:flex;justify-content:center;gap:30px;}
-.legend-key li{display:flex;align-items:center;gap:9px;font-size:.98rem;font-weight:600;color:var(--green-900);}
-.legend-key .swatch{width:18px;height:18px;border-radius:4px;}
-.legend-hint{font-size:.98rem;color:var(--green-900);margin:0 0 12px;font-weight:500;}
-.legend-note{font-size:.8rem;color:var(--muted);margin:0;}
+
+.map-stage{margin-top:56px;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;align-items:center;gap:22px;}
+.legend-key{list-style:none;margin:0;padding:0;display:flex;justify-content:center;gap:30px;}
+.legend-key li{display:flex;align-items:center;gap:9px;font-size:.92rem;font-weight:600;color:var(--green-900);}
+.legend-key .swatch{width:16px;height:16px;border-radius:4px;}
+.map-canvas{width:min(740px,90vw,calc(90vh * 1013 / 1552));}
+.map-canvas svg{width:100%;height:auto;display:block;}
+.legend-note{font-size:.8rem;color:var(--muted);margin:0;text-align:center;max-width:620px;}
+
+/* lot polygons: fill/hover/selected states */
+.mapa-lotes .lote{stroke:#1b1b1b;stroke-width:4;stroke-linejoin:round;transition:fill .15s ease,stroke .15s ease,stroke-width .15s ease;}
+.mapa-lotes .disponivel .lote{fill:#b7e7b0;}
+.mapa-lotes .vendida .lote{fill:#ef8a7f;}
+.mapa-lotes .disponivel{cursor:pointer;}
+.mapa-lotes .disponivel:hover .lote,.mapa-lotes .disponivel:focus-visible .lote{fill:#8fd68a;}
+.mapa-lotes .disponivel:focus,.mapa-lotes .disponivel:focus-visible{outline:none;}
+.mapa-lotes .disponivel.selecionado .lote{fill:var(--gold);stroke:var(--green-900);stroke-width:7;}
+.mapa-lotes .rot{text-anchor:middle;pointer-events:none;fill:#141414;font-family:var(--font-body);}
+.mapa-lotes .num{font-weight:800;font-size:40px;}
+.mapa-lotes .st{font-size:18px;font-weight:600;letter-spacing:.5px;}
+
+/* side panel with the details of the selected lot */
+.lot-panel{
+  position:fixed;top:0;right:0;height:100%;width:340px;max-width:88vw;background:#fff;z-index:90;
+  padding:44px 32px;display:flex;flex-direction:column;gap:16px;
+  box-shadow:-26px 0 60px -26px rgba(19,32,24,0.5);
+  transform:translateX(100%);transition:transform .35s ease;overflow-y:auto;
+}
+.lot-panel.is-open{transform:translateX(0);}
+.lot-panel-close{
+  align-self:flex-end;background:none;border:0;font-size:1.9rem;line-height:1;color:var(--muted);
+  cursor:pointer;padding:4px;margin:-4px -4px 4px 0;
+}
+.lot-panel-close:hover{color:var(--green-900);}
+.lot-panel-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text);margin:0;}
+.lot-panel-title{font-family:var(--font-body);font-weight:600;font-size:2.2rem;letter-spacing:.01em;color:var(--green-900);margin:0;}
+.lot-panel-status{
+  align-self:flex-start;padding:6px 14px;font-size:.68rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--free);color:var(--green-900);
+}
+.lot-panel-facts{list-style:none;margin:6px 0 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px;}
+.lot-panel-facts li{display:flex;justify-content:space-between;font-size:.95rem;color:var(--muted);}
+.lot-panel-facts strong{color:var(--green-900);font-weight:600;}
+.lot-panel-cta{justify-content:center;margin-top:4px;}
 
 /* gallery */
 .gallery{margin-top:72px;}
@@ -366,8 +400,11 @@ body.lb-lock{overflow:hidden;}
   body.menu-open .nav-burger span:nth-child(2){opacity:0;}
   body.menu-open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-  .plan{grid-template-columns:1fr;gap:44px;}
-  .plan-map{width:100%;max-width:440px;margin:0 auto;}
+  .lot-panel{
+    top:auto;bottom:0;left:0;right:0;width:auto;max-width:none;height:auto;max-height:78vh;
+    border-radius:20px 20px 0 0;transform:translateY(100%);padding:28px 24px 32px;
+  }
+  .lot-panel.is-open{transform:translateY(0);}
 }
 
 @media (max-width:760px){

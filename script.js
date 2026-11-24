@@ -1,3 +1,79 @@
+/* ---------- mapa interativo das chácaras ---------- */
+(function () {
+  "use strict";
+
+  var svg = document.getElementById("mapaLotes");
+  if (!svg) return;
+
+  var VENDIDAS = ["09", "10", "11", "12", "13"];
+  var WHATSAPP_NUMBER = "5531990762890";
+
+  var panel = document.getElementById("lotPanel");
+  var panelClose = document.getElementById("lotPanelClose");
+  var panelId = document.getElementById("lotPanelId");
+  var panelWhatsapp = document.getElementById("lotPanelWhatsapp");
+  var selected = null;
+
+  function closePanel() {
+    panel.classList.remove("is-open");
+    panel.setAttribute("aria-hidden", "true");
+    if (selected) {
+      selected.classList.remove("selecionado");
+      selected.setAttribute("aria-pressed", "false");
+      selected = null;
+    }
+  }
+
+  function openPanel(g, n) {
+    if (selected) {
+      selected.classList.remove("selecionado");
+      selected.setAttribute("aria-pressed", "false");
+    }
+    g.classList.add("selecionado");
+    g.setAttribute("aria-pressed", "true");
+    selected = g;
+
+    panelId.textContent = n;
+    var msg = "Olá! Vi o site do Recanto da Lagoa e tenho interesse na chácara " + n + ".";
+    panelWhatsapp.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(msg);
+    panel.classList.add("is-open");
+    panel.setAttribute("aria-hidden", "false");
+  }
+
+  function toggleLote(g, n) {
+    if (selected === g) {
+      closePanel();
+    } else {
+      openPanel(g, n);
+    }
+  }
+
+  svg.querySelectorAll(".lote-g").forEach(function (g) {
+    var n = g.getAttribute("data-lote");
+    var vendida = VENDIDAS.indexOf(n) !== -1;
+    g.classList.add(vendida ? "vendida" : "disponivel");
+    g.querySelector(".st").textContent = vendida ? "VENDIDA" : "DISPONÍVEL";
+    if (!vendida) {
+      g.setAttribute("tabindex", "0");
+      g.setAttribute("role", "button");
+      g.setAttribute("aria-pressed", "false");
+      g.setAttribute("aria-label", "Chácara " + n + " — disponível, ver detalhes");
+      g.addEventListener("click", function () { toggleLote(g, n); });
+      g.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleLote(g, n);
+        }
+      });
+    }
+  });
+
+  panelClose.addEventListener("click", closePanel);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && panel.classList.contains("is-open")) closePanel();
+  });
+})();
+
 /* ---------- alinhamento da galeria (coluna da direita acompanha a foto grande) ---------- */
 (function () {
   "use strict";

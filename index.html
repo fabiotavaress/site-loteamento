@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261124f">
+<link rel="stylesheet" href="style.css?v=20261124h">
 </head>
 <body>
 
@@ -114,35 +114,59 @@
     </div>
   </section>
 
-  <section class="section section-alt" id="chacaras">
+  <section class="section section-alt map-section" id="chacaras">
     <div class="wrap">
       <div class="intro" data-reveal>
         <h2 class="intro-title">Escolha o seu<br>pedaço do<br>recanto.</h2>
         <div class="intro-text">
           <p>São 14 chácaras: 9 ainda disponíveis e 5 já vendidas.</p>
-          <p>Toque no número de uma chácara disponível para falar com a gente sobre ela pelo WhatsApp.</p>
-        </div>
-      </div>
-
-      <div class="plan" data-reveal>
-        <figure class="plan-map">
-          <object data="assets/mapa.svg" type="image/svg+xml"
-                  aria-label="Mapa de disponibilidade das 14 chácaras: 01 a 08 e 14 disponíveis; 09 a 13 vendidas">
-            <img src="assets/mapa-chacaras.png" width="1013" height="1552" loading="lazy"
-                 alt="Mapa de disponibilidade das 14 chácaras: 01 a 08 e 14 disponíveis; 09 a 13 vendidas">
-          </object>
-        </figure>
-
-        <div class="plan-legend">
-          <ul class="legend-key">
-            <li><span class="swatch swatch-free"></span>Disponível</li>
-            <li><span class="swatch swatch-sold"></span>Vendido</li>
-          </ul>
-          <p class="legend-hint">Clique em uma chácara disponível para mais informações pelo WhatsApp.</p>
-          <p class="legend-note">Croqui comercial, sem escala. Situação de vendas informada pelo proprietário em 24/11/2026.</p>
+          <p>Toque em uma chácara disponível no mapa para ver os detalhes.</p>
         </div>
       </div>
     </div>
+
+    <div class="map-stage" data-reveal>
+      <ul class="legend-key">
+        <li><span class="swatch swatch-free"></span>Disponível</li>
+        <li><span class="swatch swatch-sold"></span>Vendido</li>
+      </ul>
+
+      <div class="map-canvas">
+        <svg id="mapaLotes" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1013 1552" class="mapa-lotes" role="img" aria-label="Mapa de disponibilidade das 14 chácaras: 01 a 08 e 14 disponíveis; 09 a 13 vendidas">
+          <g class="lote-g" id="lote-09" data-lote="09"><polygon class="lote" points="599,123 812,322 803,333 802,341 762,389 650,305 651,302 642,294 634,288 631,290 529,213 528,209 599,124"/><text class="rot num" x="670" y="257">09</text><text class="rot st" x="670" y="281"></text></g>
+          <g class="lote-g" id="lote-10" data-lote="10"><polygon class="lote" points="523,216 760,394 697,473 591,394 591,390 575,377 570,377 460,295 522,217"/><text class="rot num" x="610" y="344">10</text><text class="rot st" x="610" y="368"></text></g>
+          <g class="lote-g" id="lote-11" data-lote="11"><polygon class="lote" points="456,299 693,477 629,560 525,481 524,476 517,470 507,463 502,463 390,379 455,300"/><text class="rot num" x="542" y="428">11</text><text class="rot st" x="542" y="452"></text></g>
+          <g class="lote-g" id="lote-12" data-lote="12"><polygon class="lote" points="387,383 625,564 562,646 455,564 456,560 446,552 434,547 322,463 386,384"/><text class="rot num" x="474" y="513">12</text><text class="rot st" x="474" y="537"></text></g>
+          <g class="lote-g" id="lote-13" data-lote="13"><polygon class="lote" points="318,468 426,547 433,556 459,573 558,650 497,727 493,731 490,729 387,652 385,647 370,635 360,632 251,552 317,469"/><text class="rot num" x="404" y="599">13</text><text class="rot st" x="404" y="623"></text></g>
+          <g class="lote-g" id="lote-08" data-lote="08"><polygon class="lote" points="903,313 966,397 903,488 910,495 867,559 863,560 840,544 805,519 807,516 797,508 779,499 730,463 817,352 822,351 828,344 831,340 831,331 891,328 902,314"/><text class="rot num" x="854" y="432">08</text><text class="rot st" x="854" y="456"></text></g>
+          <g class="lote-g" id="lote-07" data-lote="07"><polygon class="lote" points="726,468 861,565 825,622 802,652 806,656 805,659 769,711 702,667 702,663 687,651 680,651 617,608 725,469"/><text class="rot num" x="742" y="589">07</text><text class="rot st" x="742" y="613"></text></g>
+          <g class="lote-g" id="lote-06" data-lote="06"><polygon class="lote" points="614,613 765,717 708,797 710,804 671,863 667,864 597,812 599,809 582,796 578,798 507,747 613,614"/><text class="rot num" x="639" y="736">06</text><text class="rot st" x="639" y="760"></text></g>
+          <g class="lote-g" id="lote-05" data-lote="05"><polygon class="lote" points="503,752 666,870 632,923 618,939 617,942 621,946 577,1012 494,948 494,943 480,932 468,928 402,879 503,753"/><text class="rot num" x="537" y="879">05</text><text class="rot st" x="537" y="903"></text></g>
+          <g class="lote-g" id="lote-04" data-lote="04"><polygon class="lote" points="398,883 574,1016 557,1043 540,1063 540,1070 514,1103 458,1111 391,1059 391,1054 375,1042 368,1041 299,989 380,896 387,889 392,890 397,884"/><text class="rot num" x="440" y="1004">04</text><text class="rot st" x="440" y="1028"></text></g>
+          <g class="lote-g" id="lote-14" data-lote="14"><polygon class="lote" points="247,556 489,735 384,866 381,869 376,866 323,822 319,818 319,813 304,800 300,801 238,746 268,710 296,619 295,616 226,581 246,557"/><text class="rot num" x="353" y="728">14</text><text class="rot st" x="353" y="752"></text></g>
+          <g class="lote-g" id="lote-03" data-lote="03"><polygon class="lote" points="295,994 446,1108 428,1110 427,1115 412,1117 396,1146 390,1148 380,1165 382,1169 361,1206 353,1212 344,1227 343,1239 264,1198 266,1195 257,1189 247,1184 241,1185 171,1147 172,1139 179,1130 294,995"/><text class="rot num" x="305" y="1118">03</text><text class="rot st" x="305" y="1142"></text></g>
+          <g class="lote-g" id="lote-02" data-lote="02"><polygon class="lote" points="168,1153 340,1245 319,1290 314,1292 304,1313 308,1318 287,1368 254,1370 225,1384 206,1389 178,1388 158,1382 137,1369 123,1356 106,1333 95,1310 90,1290 90,1267 95,1247 110,1220 167,1154"/><text class="rot num" x="204" y="1280">02</text><text class="rot st" x="204" y="1304"></text></g>
+          <g class="lote-g" id="lote-01" data-lote="01"><polygon class="lote" points="508,1111 510,1112 496,1208 493,1210 489,1230 492,1241 474,1343 419,1392 395,1402 376,1400 292,1370 315,1317 313,1315 344,1249 415,1123 507,1112"/><text class="rot num" x="413" y="1265">01</text><text class="rot st" x="413" y="1289"></text></g>
+        </svg>
+      </div>
+
+      <p class="legend-note">Croqui comercial, sem escala. Situação de vendas informada pelo proprietário em 24/11/2026.</p>
+    </div>
+
+    <aside class="lot-panel" id="lotPanel" aria-hidden="true">
+      <button type="button" class="lot-panel-close" id="lotPanelClose" aria-label="Fechar detalhes">&times;</button>
+      <p class="lot-panel-eyebrow">Chácara disponível</p>
+      <p class="lot-panel-title">Nº <span id="lotPanelId">—</span></p>
+      <span class="lot-panel-status">Disponível</span>
+      <ul class="lot-panel-facts">
+        <li><span>Área</span><strong>20.000 m²</strong></li>
+        <li><span>Investimento</span><strong>R$ 380.000</strong></li>
+      </ul>
+      <a class="btn-gold lot-panel-cta" id="lotPanelWhatsapp" target="_blank" rel="noopener" href="https://wa.me/5531990762890">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4-.1-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4-.2 0-.4 0-.7 0-.2 0-.6.1-.9.4-.3.4-1.2 1.1-1.2 2.7 0 1.6 1.2 3.1 1.3 3.3.1.2 2 3.1 5 4.3 2.5 1 2.5.7 3 .6.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3 0-.1-.1-.2-.4-.3Z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.6 1.4 5.1L2 22l5.1-1.3C8.5 21.5 10.2 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2Zm0 18.1c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.3 15 3.9 13.5 3.9 12c0-4.5 3.7-8.1 8.1-8.1 4.5 0 8.1 3.7 8.1 8.1s-3.6 8.1-8.1 8.1Z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </aside>
   </section>
 
   <section class="section" id="financiamento">
@@ -324,6 +348,6 @@
   <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Próxima foto">&#8250;</button>
 </div>
 
-<script src="script.js?v=20261124c"></script>
+<script src="script.js?v=20261124d"></script>
 </body>
 </html>
