@@ -1,3 +1,24 @@
+/* ---------- alinhamento da galeria (coluna da direita acompanha a foto grande) ---------- */
+(function () {
+  "use strict";
+
+  var hero = document.querySelector(".gallery-item--hero");
+  var stack = document.querySelector(".gallery-stack");
+  if (!hero || !stack) return;
+
+  function sync() {
+    if (window.innerWidth <= 760) {
+      stack.style.height = "";
+      return;
+    }
+    stack.style.height = hero.getBoundingClientRect().height + "px";
+  }
+
+  window.addEventListener("load", sync);
+  window.addEventListener("resize", sync);
+  sync();
+})();
+
 /* ---------- lightbox da galeria ---------- */
 (function () {
   "use strict";
