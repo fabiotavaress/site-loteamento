@@ -8,13 +8,13 @@ Loteamento de chácaras em **Pingo-d'Água, Minas Gerais**, às margens da **Lag
 - 20.000 m² (2 hectares) por chácara
 - 9 unidades disponíveis: 01, 02, 03, 04, 05, 06, 07, 08 e 14
 - 5 unidades vendidas: 09, 10, 11, 12 e 13
-- Valores a partir de R$ 280.000
+- Valor fixo de R$ 380.000 por chácara
 - Condições de parcelamento a definir
 
 ## Contato
 
-- WhatsApp: (31) 97126-7200
-- Corretora responsável: Marina (contato a adicionar)
+- WhatsApp principal: Maycon — (31) 9 9076-2890
+- WhatsApp alternativo: Wellington — (31) 9 8514-8858
 
 ## Objetivo
 
