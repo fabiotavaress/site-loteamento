@@ -210,7 +210,8 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
 .footer-grid .footer-col{align-self:start;}
 .footer-brand img{height:84px;width:auto;}
 .footer-label{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text);margin:0 0 8px;}
-.footer-col p{margin:0;color:var(--green-900);}
+.footer-col p{margin:0;}
+.footer-col p:not(.footer-label){color:var(--green-900);}
 .footer-phone{display:block;font-size:1.15rem;font-weight:300;color:var(--green-900);letter-spacing:.04em;white-space:nowrap;}
 .footer-phone + .footer-phone{margin-top:6px;}
 .footer-phone:hover{color:var(--gold-deep);}
