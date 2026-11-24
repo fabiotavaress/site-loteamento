@@ -201,10 +201,12 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
 /* ---------- footer ---------- */
 .footer{background:var(--cream-alt);color:var(--muted);padding:64px 0 28px;font-size:.9rem;}
 .footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:40px;align-items:center;}
+.footer-grid .footer-col{align-self:start;}
 .footer-brand img{height:84px;width:auto;}
 .footer-label{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text);margin:0 0 8px;}
 .footer-col p{margin:0;}
-.footer-phone{font-size:1.45rem;font-weight:300;color:var(--green-900);letter-spacing:.04em;}
+.footer-phone{display:block;font-size:1.15rem;font-weight:300;color:var(--green-900);letter-spacing:.04em;white-space:nowrap;}
+.footer-phone + .footer-phone{margin-top:6px;}
 .footer-phone:hover{color:var(--gold-deep);}
 .footer-legal{
   margin-top:48px;padding-top:22px;border-top:1px solid var(--line);font-size:.74rem;
