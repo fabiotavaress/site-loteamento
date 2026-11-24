@@ -269,6 +269,7 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
   .lot{width:50px;height:50px;}
   .map-embed{margin-top:52px;height:320px;}
   .cta{padding:88px 0 96px;}
+  .cta-watermark{font-size:15vw;}
   .btn-gold{padding:16px 22px;font-size:.7rem;letter-spacing:.1em;white-space:nowrap;}
   .footer{padding-bottom:110px;}
   .footer-grid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:28px;}
