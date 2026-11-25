@@ -306,3 +306,20 @@
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
   items.forEach(function (el) { io.observe(el); });
 })();
+
+/* ---------- botão flutuante do WhatsApp só aparece depois de rolar ---------- */
+(function () {
+  "use strict";
+
+  var fab = document.querySelector(".whatsapp-float");
+  if (!fab) return;
+
+  function reveal() {
+    if (window.scrollY > 80) {
+      fab.classList.add("is-visible");
+      window.removeEventListener("scroll", reveal);
+    }
+  }
+  reveal();
+  window.addEventListener("scroll", reveal, { passive: true });
+})();
