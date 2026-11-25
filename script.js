@@ -307,19 +307,16 @@
   items.forEach(function (el) { io.observe(el); });
 })();
 
-/* ---------- botão flutuante do WhatsApp só aparece depois de rolar ---------- */
+/* ---------- botão flutuante do WhatsApp some no topo da página ---------- */
 (function () {
   "use strict";
 
   var fab = document.querySelector(".whatsapp-float");
   if (!fab) return;
 
-  function reveal() {
-    if (window.scrollY > 80) {
-      fab.classList.add("is-visible");
-      window.removeEventListener("scroll", reveal);
-    }
+  function toggle() {
+    fab.classList.toggle("is-visible", window.scrollY > 80);
   }
-  reveal();
-  window.addEventListener("scroll", reveal, { passive: true });
+  toggle();
+  window.addEventListener("scroll", toggle, { passive: true });
 })();
