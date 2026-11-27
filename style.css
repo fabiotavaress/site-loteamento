@@ -78,7 +78,7 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 
 /* ---------- hero ---------- */
 .hero{
-  position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;
+  position:relative;min-height:100vh;min-height:100svh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;
   overflow:hidden;background:#132018;padding:9vh 0 110px;
 }
 .hero-bg{position:absolute;inset:0;z-index:0;}
@@ -500,11 +500,9 @@ body.lb-lock{overflow:hidden;}
   .nav .nav-links a:not(.nav-cta):hover{color:var(--green-900);}
   .nav-links a:not(.nav-cta)::after{display:none;}
   .nav-links .nav-cta{justify-content:center;margin-top:16px;min-height:54px;padding:14px 24px;font-size:.9rem;}
-  .nav-burger{display:block;opacity:1;}
-  /* on the cover (top of page, menu closed): only three thin white lines, no white box */
-  .nav-burger{transition:opacity .3s ease,background-color .3s ease,border-color .3s ease;}
-  .nav:not(.is-scrolled) .nav-burger[aria-expanded="false"]{background:transparent;border-color:transparent;}
-  .nav:not(.is-scrolled) .nav-burger[aria-expanded="false"] span{height:1.5px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.35);}
+  /* hidden on the cover; appears once the page is scrolled (or the menu is open) */
+  .nav-burger{display:block;pointer-events:none;}
+  .nav.is-scrolled .nav-burger,body.menu-open .nav-burger{pointer-events:auto;}
   body.menu-open .nav-burger{opacity:1;}
   body.menu-open .nav::before{opacity:1;}
   body.menu-open .nav-brand{opacity:1;}
