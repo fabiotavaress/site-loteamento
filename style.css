@@ -120,14 +120,17 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
 
 .whatsapp-float{
-  position:fixed;right:24px;bottom:24px;z-index:60;width:58px;height:58px;border-radius:50%;
-  background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 26px -6px rgba(0,0,0,0.4);
+  position:fixed;right:24px;bottom:24px;z-index:60;width:60px;height:60px;border-radius:50%;
+  background:#25d366;color:#fff;display:grid;place-items:center;
+  box-shadow:0 10px 26px rgba(37,211,102,0.45);
   opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;
-  transition:opacity .3s ease,transform .3s ease,background .15s ease;
+  transition:opacity .3s ease,transform .25s ease;
 }
+.whatsapp-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25d366;animation:waPulse 2.6s ease-out infinite;}
+.whatsapp-float svg{width:32px;height:32px;}
 .whatsapp-float.is-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-.whatsapp-float:hover{transform:scale(1.06);background:#1ba855;}
+.whatsapp-float:hover{transform:scale(1.06);}
+@keyframes waPulse{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.6);opacity:0;}}
 
 /* ---------- sections ---------- */
 .section{padding:84px 0;}
@@ -176,6 +179,14 @@ a.lot{
 a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--green-900);color:#fff;transform:translateY(-2px);}
 .lot-sold{background:var(--sold);border:1px solid var(--sold-line);color:var(--sold-ink);opacity:.8;}
 
+.map-section{position:relative;overflow:hidden;}
+.map-section::before{
+  content:"";position:absolute;inset:-40px;pointer-events:none;
+  background:url("assets/galeria-chacaras.jpg") center/cover no-repeat;
+  filter:blur(12px) saturate(.85);opacity:.2;
+}
+.map-section::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,var(--cream-alt) 0%,rgba(239,233,217,0) 22%,rgba(239,233,217,0) 78%,var(--cream-alt) 100%);}
+.map-section > .wrap,.map-section > .map-stage{position:relative;z-index:auto;}
 .map-stage{margin-top:56px;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;align-items:center;gap:22px;}
 .legend-key{list-style:none;margin:0;padding:0;display:flex;justify-content:center;gap:30px;}
 .legend-key li{display:flex;align-items:center;gap:9px;font-size:.92rem;font-weight:600;color:var(--green-900);}
@@ -434,6 +445,7 @@ body.lb-lock{overflow:hidden;}
 .js [data-reveal].is-visible{opacity:1;transform:none;}
 
 @media (prefers-reduced-motion:reduce){
+  .whatsapp-float::after{animation:none;}
   html{scroll-behavior:auto;}
   .js [data-reveal]{opacity:1;transform:none;transition:none;}
   .scroll-cue,.hero-bg img{animation:none;}
