@@ -555,7 +555,9 @@ body.lb-lock{overflow:hidden;}
   .cta-contact + .cta-contact{border-left:0;padding-top:22px;border-top:1px solid rgba(201,162,75,0.3);width:120px;}
   .btn-gold,.btn-outline-gold{padding:16px 22px;font-size:.7rem;letter-spacing:.1em;white-space:nowrap;}
   .footer{padding-bottom:0;}
-  .footer-bottom{margin-bottom:0;padding-bottom:96px;}
+  .footer-bottom{margin-bottom:0;padding:18px 0 20px;}
+  .footer-bottom p{font-size:.875rem;}
+  .footer-bottom .footer-credit{margin-top:6px;font-size:.84rem;}
   .footer-grid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:26px;}
   .footer-brand{justify-self:center;}
   .footer-brand img{height:64px;}
