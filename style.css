@@ -218,7 +218,7 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
 }
 .gallery-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;max-width:960px;margin:0 auto;align-items:start;}
 .gallery-stack{display:grid;grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:20px;}
-.gallery-item{margin:0;background:#fff;padding:7px;box-shadow:0 14px 30px -18px rgba(19,32,24,0.35);display:flex;flex-direction:column;min-height:0;}
+.gallery-item{margin:0;position:relative;border-radius:6px;overflow:hidden;background:var(--cream-alt);display:flex;flex-direction:column;min-height:0;}
 .gallery-thumb{
   display:block;width:100%;flex:1 1 auto;min-height:0;padding:0;border:0;background:none;cursor:pointer;position:relative;overflow:hidden;
 }
@@ -237,8 +237,13 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
 }
 .gallery-thumb:hover .gallery-zoom,.gallery-thumb:focus-visible .gallery-zoom{opacity:1;transform:translate(-50%,-50%) scale(1);}
 .gallery-item figcaption{
-  margin-top:10px;text-align:center;font-size:.76rem;color:var(--muted);letter-spacing:.02em;
+  position:absolute;left:0;right:0;bottom:0;z-index:1;pointer-events:none;
+  padding:56px 20px 16px;text-align:left;
+  background:linear-gradient(to top,rgba(19,32,24,0.62) 0%,rgba(19,32,24,0.28) 45%,rgba(19,32,24,0) 100%);
+  font-size:.66rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#fff;
+  display:flex;align-items:center;gap:10px;
 }
+.gallery-item figcaption::before{content:"";width:18px;height:1px;background:var(--gold);flex:none;}
 
 /* ---------- lightbox ---------- */
 body.lb-lock{overflow:hidden;}
