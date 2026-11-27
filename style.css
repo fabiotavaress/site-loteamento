@@ -79,9 +79,11 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 /* ---------- hero ---------- */
 .hero{
   position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;
-  overflow:hidden;background:#132018;padding:9vh 0 110px;
+  overflow:hidden;background:#251e20;padding:9vh 0 110px;
 }
-.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg{position:absolute;inset:0;z-index:0;
+  /* tiny blurred copy of the cover photo, shown instantly while the real photo loads */
+  background:#251e20 url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAXACgDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAIFBgQD/8QAKRAAAQQBAwEHBQAAAAAAAAAAAQACAwQRBRMhEgYUMVFSYYEiQXGhwf/EABcBAAMBAAAAAAAAAAAAAAAAAAABAgP/xAAfEQEAAgEEAwEAAAAAAAAAAAABAAIRAxIhMgQTQVH/2gAMAwEAAhEDEQA/AMKWyYH04U2QSO8FraemUWwPNiyCfsGtz/FKOtpUA3pZpHgHIYBjPysXyKE1NK7M1FSsO5Ebjj2XS2hY28mMgLRN7Q6aybpFUsjx4MGT+1SXtYqbr9t9gtOcZcGo9w9SBp2O04e6wtB3Dl3ki4bV3Jy0gfjlFWbPMZtDGJYV9dsxwva49QPmvWLXeoCOaBrm+3BREnSo/JBe37JtmqGUvbCHN9Lwq6ztSzOea7Bn0nCIlapXkjotsiyulg54J+URFW5hgn//2Q==") center 40%/cover no-repeat;}
 .hero-bg img{
   width:100%;height:100%;object-fit:cover;object-position:center 40%;
   transform-origin:55% 55%;will-change:transform;
@@ -597,6 +599,7 @@ body.lb-lock{overflow:hidden;}
   /* phone: full-screen photo, everything stacked and centred */
   .hero{padding:12vh 0 100px;}
   .hero-bg img{object-position:58% center;}
+  .hero-bg{background-position:58% center;}
   .hero::after{
     background:
       radial-gradient(ellipse 90% 30% at 50% 42%,rgba(8,12,10,0.42),rgba(8,12,10,0) 75%),
