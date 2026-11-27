@@ -439,11 +439,11 @@ body.lb-lock{overflow:hidden;}
 .cta-contact:hover .cta-contact-phone,.cta-contact:focus-visible .cta-contact-phone{color:#fff;}
 
 /* ---------- footer ---------- */
-.footer{background:var(--cream-alt);color:var(--muted);padding:60px 0 28px;font-size:.9rem;}
-.footer-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:0;align-items:center;}
-.footer-brand{justify-self:start;}
-.footer-brand img{height:80px;width:auto;}
-.footer-grid .footer-col{padding:6px 0 6px 40px;border-left:1px solid var(--line);}
+.footer{background:var(--cream-alt);color:var(--muted);padding:44px 0 28px;font-size:.9rem;}
+.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:center;}
+.footer-brand{justify-self:center;}
+.footer-brand img{height:72px;width:auto;}
+.footer-grid .footer-col{display:grid;justify-content:center;align-content:center;align-self:stretch;padding:4px 24px;border-left:1px solid rgba(19,32,24,0.1);}
 .footer-label{font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-text);margin:0 0 12px;}
 .footer-col p{margin:0;}
 .footer-col p:not(.footer-label){color:var(--muted);line-height:1.7;}
@@ -451,7 +451,7 @@ body.lb-lock{overflow:hidden;}
 .footer-phone + .footer-phone{margin-top:6px;}
 .footer-phone:hover{color:var(--gold-deep);}
 .footer-phone{transition:color .2s ease;}
-.footer-bottom{margin-top:48px;margin-bottom:-28px;background:var(--green-900);padding:26px 0 28px;text-align:center;}
+.footer-bottom{margin-top:40px;margin-bottom:-28px;background:var(--green-900);padding:26px 0 28px;text-align:center;}
 .footer-bottom p{margin:0;font-size:.95rem;color:rgba(255,255,255,0.88);}
 .footer-bottom .footer-credit{margin-top:8px;font-size:.86rem;color:rgba(255,255,255,0.62);}
 .footer-credit a{color:var(--gold-soft);font-weight:700;}
@@ -558,8 +558,8 @@ body.lb-lock{overflow:hidden;}
   .footer-bottom{margin-bottom:0;padding-bottom:96px;}
   .footer-grid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:26px;}
   .footer-brand{justify-self:center;}
-  .footer-brand img{height:72px;}
-  .footer-grid .footer-col{padding:22px 0 0;border-left:0;border-top:1px solid var(--line);width:100%;max-width:280px;}
+  .footer-brand img{height:64px;}
+  .footer-grid .footer-col{justify-content:stretch;padding:20px 0 0;border-left:0;border-top:1px solid rgba(19,32,24,0.1);width:100%;max-width:260px;}
   .footer-phone{margin:0 auto;}
 }
 
