@@ -619,7 +619,8 @@ body.lb-lock{overflow:hidden;}
    status-bar area at the top) takes the sky colour of the photo; back to cream after scrolling */
 html{background:var(--cream);}
 @media (max-width:900px){
-  html.at-top{background:#251e20;}
+  /* body too: iOS 26 Safari tints its frosted status-bar edge with the body colour */
+  html.at-top,html.at-top body{background:#251e20;}
 }
 
 /* iOS 26 Safari colours the status-bar strip (clock/battery) from the first opaque fixed element at
