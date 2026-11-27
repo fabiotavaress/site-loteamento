@@ -1,3 +1,39 @@
+/* ---------- ao atualizar a página, volta direto para onde estava (sem mostrar a capa antes) ---------- */
+(function () {
+  var KEY = "scrollY:" + location.pathname;
+  try {
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  } catch (e) {}
+  var save = function () {
+    try { sessionStorage.setItem(KEY, String(Math.round(window.scrollY))); } catch (e) {}
+  };
+  window.addEventListener("pagehide", save);
+  window.addEventListener("beforeunload", save);
+
+  var y = 0;
+  try { y = parseInt(sessionStorage.getItem(KEY), 10) || 0; } catch (e) {}
+  var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+  var isReload = nav ? nav.type === "reload" || nav.type === "back_forward" : true;
+  if (!y || !isReload) return;
+
+  var root = document.documentElement;
+  var jump = function () {
+    var prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, y);
+    root.style.scrollBehavior = prev;
+  };
+  jump();
+  // se algo mudar de altura enquanto carrega, corrige uma vez (só se a pessoa ainda não rolou)
+  var moved = false;
+  var onUser = function () { moved = true; };
+  window.addEventListener("wheel", onUser, { passive: true, once: true });
+  window.addEventListener("touchstart", onUser, { passive: true, once: true });
+  window.addEventListener("load", function () {
+    if (!moved && Math.abs(window.scrollY - y) > 2) jump();
+  });
+})();
+
 /* ---------- mapa interativo das chácaras ---------- */
 (function () {
   "use strict";
