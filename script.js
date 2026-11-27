@@ -279,7 +279,11 @@
     links.classList.toggle("open", open);
     document.body.classList.toggle("menu-open", open);
     burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
   };
+  document.addEventListener("click", function (e) {
+    if (links.classList.contains("open") && !e.target.closest(".nav")) setMenu(false);
+  });
   burger.addEventListener("click", function () {
     setMenu(!links.classList.contains("open"));
   });
