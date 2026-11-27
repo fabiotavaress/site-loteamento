@@ -179,14 +179,11 @@ a.lot{
 a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--green-900);color:#fff;transform:translateY(-2px);}
 .lot-sold{background:var(--sold);border:1px solid var(--sold-line);color:var(--sold-ink);opacity:.8;}
 
-.map-section{position:relative;overflow:hidden;}
-.map-section::before{
-  content:"";position:absolute;inset:-40px;pointer-events:none;
-  background:url("assets/galeria-chacaras.jpg") center/cover no-repeat;
-  filter:blur(12px) saturate(.85);opacity:.2;
+.map-section{
+  background:
+    linear-gradient(180deg,rgba(239,233,217,.9) 0%,rgba(239,233,217,.76) 50%,rgba(239,233,217,.9) 100%),
+    url("assets/galeria-lagoa.jpg") center/cover no-repeat;
 }
-.map-section::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,var(--cream-alt) 0%,rgba(239,233,217,0) 22%,rgba(239,233,217,0) 78%,var(--cream-alt) 100%);}
-.map-section > .wrap,.map-section > .map-stage{position:relative;z-index:auto;}
 .map-stage{margin-top:56px;margin-left:auto;margin-right:auto;display:flex;flex-direction:column;align-items:center;gap:22px;}
 .legend-key{list-style:none;margin:0;padding:0;display:flex;justify-content:center;gap:30px;}
 .legend-key li{display:flex;align-items:center;gap:9px;font-size:.92rem;font-weight:600;color:var(--green-900);}
