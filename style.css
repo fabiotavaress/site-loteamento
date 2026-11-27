@@ -561,7 +561,7 @@ body.lb-lock{overflow:hidden;}
   .map-embed{margin-top:52px;height:320px;border-radius:18px;}
   .map-embed iframe{top:0;height:100%;}
   .cta{padding:68px 0 76px;}
-  .cta-watermark{font-size:22vw;}
+  .cta-watermark{font-size:18vw;letter-spacing:.04em;}
   .cta-eyebrow{font-size:.64rem;letter-spacing:.22em;margin-bottom:14px;}
   .cta-actions{display:flex;width:100%;max-width:340px;min-width:0;margin:0 auto;}
   .cta-contacts{flex-direction:column;align-items:center;gap:22px;margin-top:36px;}
