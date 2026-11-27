@@ -361,7 +361,7 @@ body.lb-lock{overflow:hidden;}
 .cta-actions{display:inline-flex;flex-direction:column;gap:14px;}
 .cta-actions .btn-gold{justify-content:center;}
 .btn-outline-gold{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--gold);color:var(--gold-soft);
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--gold);border-radius:999px;color:var(--gold-soft);
   padding:17px 32px;font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:none;
   transition:background .2s ease,color .2s ease;
 }
