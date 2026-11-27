@@ -78,7 +78,7 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 
 /* ---------- hero ---------- */
 .hero{
-  position:relative;min-height:100vh;min-height:100svh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;
+  position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;
   overflow:hidden;background:#132018;padding:9vh 0 110px;
 }
 .hero-bg{position:absolute;inset:0;z-index:0;}
@@ -110,6 +110,12 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 .hero-facts{display:flex;align-items:center;justify-content:center;gap:30px;margin-top:clamp(24px,4.5vh,46px);}
 .hero-place{
   margin:0;text-align:right;font-size:.78rem;font-weight:500;line-height:1.8;letter-spacing:.2em;text-transform:uppercase;
+}
+/* phones: the cover fills the whole screen, including the area behind Safari's
+   floating toolbars, so the next section never peeks through below it */
+@supports (height:100lvh){
+  .hero{min-height:100lvh;}
+  .scroll-cue{bottom:calc(28px + (100lvh - 100svh));}
 }
 .hero-size{
   margin:0;display:flex;align-items:center;gap:12px;padding:6px 6px;text-transform:uppercase;
