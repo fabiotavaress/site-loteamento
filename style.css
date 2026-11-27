@@ -601,3 +601,10 @@ body.lb-lock{overflow:hidden;}
   .hero-facts{flex-direction:column;gap:18px;margin-top:4vh;}
   .hero-place{text-align:center;font-size:.7rem;letter-spacing:.16em;}
 }
+
+/* iPhone: with viewport-fit=cover the page reaches the bottom edge; keep fixed/last items clear of the home bar */
+.whatsapp-float{bottom:calc(24px + env(safe-area-inset-bottom,0px));}
+.footer-bottom{padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));}
+@media (max-width:760px){
+  .footer-bottom{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));}
+}
