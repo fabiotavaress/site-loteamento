@@ -133,7 +133,7 @@ h1,h2,h3{margin:0;font-weight:inherit;}
   /* phones: Safari also shows the page below the large viewport (under its floating bar and
      the home bar), so the cover is made a little taller and the cue moved up by the same amount */
   @media (max-width:900px){
-    .hero{min-height:calc(100lvh + 90px);}
+    .hero{min-height:calc(100lvh + 90px + 64px);}
     .scroll-cue{bottom:calc(28px + 90px + (100lvh - 100svh));}
   }
 }
@@ -627,10 +627,20 @@ html{background:var(--cream);}
    element; the transparent header is made "tap-through" so Safari skips it. Hidden after scrolling. */
 .status-tint{display:none;}
 @media (max-width:900px){
-  html.at-top .status-tint{
+  html.at-top.above-bleed .status-tint{
     display:block;position:fixed;top:0;left:0;right:0;height:12px;z-index:70;
     background-color:#251e20;
   }
   html.at-top .nav,html.at-top .nav-inner{pointer-events:none;}
   html.at-top .nav-brand,html.at-top .nav-links{pointer-events:auto;}
+}
+
+/* phones: extra photo on top of the cover (the page rests scrolled by this amount, see script.js),
+   so the logo and texts stay exactly where they were */
+@media (max-width:900px){
+  .hero{padding-top:calc(9vh + 64px);}
+  #topo{scroll-margin-top:-144px;} /* "voltar ao topo" stops at the resting position (80px scroll-padding + 64px) */
+}
+@media (max-width:700px){
+  .hero{padding-top:calc(12vh + 64px);}
 }

@@ -303,13 +303,26 @@
   // header: transparent over the cover, light bar after scrolling
   var nav = document.getElementById("nav");
   var themeMeta = document.getElementById("themeColor");
+  // phones: the cover has BLEED px of extra photo on top and the page rests scrolled by that amount,
+  // so iOS Safari shows that strip of the photo behind the clock (it shows the page there only when
+  // the page is scrolled and nothing pinned covers the top edge)
+  var BLEED = window.matchMedia("(max-width: 900px)").matches ? 64 : 0;
+  var root = document.documentElement;
   var updateNav = function () {
-    var scrolled = window.scrollY > 40;
+    var y = window.scrollY;
+    var scrolled = y > BLEED + 40;
     nav.classList.toggle("is-scrolled", scrolled);
-    // phones: top bar of the browser matches the cover photo while it is on screen
-    document.documentElement.classList.toggle("at-top", !scrolled);
+    root.classList.toggle("at-top", !scrolled);
+    // only when pulled above the bleed is there no photo behind the clock: use the sky colour instead
+    root.classList.toggle("above-bleed", BLEED > 0 && y < BLEED - 1);
     if (themeMeta) themeMeta.setAttribute("content", scrolled ? "#f8f6ef" : "#251e20");
   };
+  if (BLEED && window.scrollY < BLEED && !location.hash) {
+    var prevSB = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
+    window.scrollTo(0, BLEED);
+    root.style.scrollBehavior = prevSB;
+  }
   updateNav();
   window.addEventListener("scroll", updateNav, { passive: true });
 
