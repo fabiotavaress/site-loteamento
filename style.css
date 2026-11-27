@@ -383,8 +383,6 @@ body.lb-lock{overflow:hidden;}
 .footer-phone{display:block;font-size:1.15rem;font-weight:300;color:var(--muted);letter-spacing:.04em;white-space:nowrap;}
 .footer-phone + .footer-phone{margin-top:6px;}
 .footer-phone:hover{color:var(--gold-deep);}
-.footer-insta{display:block;margin-top:10px;font-size:.9rem;color:var(--muted);}
-.footer-insta:hover{color:var(--gold-deep);}
 .footer-legal{
   margin-top:48px;padding-top:22px;border-top:1px solid var(--line);font-size:.74rem;
   display:flex;justify-content:space-between;gap:12px 32px;flex-wrap:wrap;
