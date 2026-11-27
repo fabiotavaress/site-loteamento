@@ -302,8 +302,13 @@
 
   // header: transparent over the cover, light bar after scrolling
   var nav = document.getElementById("nav");
+  var themeMeta = document.getElementById("themeColor");
   var updateNav = function () {
-    nav.classList.toggle("is-scrolled", window.scrollY > 40);
+    var scrolled = window.scrollY > 40;
+    nav.classList.toggle("is-scrolled", scrolled);
+    // phones: top bar of the browser matches the cover photo while it is on screen
+    document.documentElement.classList.toggle("at-top", !scrolled);
+    if (themeMeta) themeMeta.setAttribute("content", scrolled ? "#f8f6ef" : "#251e20");
   };
   updateNav();
   window.addEventListener("scroll", updateNav, { passive: true });

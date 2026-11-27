@@ -23,7 +23,7 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px;}
 
 /* ---------- nav ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:22px 0;transition:padding .3s ease;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:calc(22px + env(safe-area-inset-top,0px)) 0 22px;transition:padding .3s ease;}
 /* the light bar lives on a pseudo-element so the mobile menu (position:fixed) can still cover the whole screen */
 .nav::before{
   content:"";position:absolute;inset:0;z-index:-1;opacity:0;transition:opacity .3s ease;
@@ -66,7 +66,7 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 .nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
 .nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
 
-.nav.is-scrolled{padding:12px 0;}
+.nav.is-scrolled{padding:calc(12px + env(safe-area-inset-top,0px)) 0 12px;}
 .nav.is-scrolled::before{opacity:1;}
 .nav.is-scrolled .nav-brand,
 .nav.is-scrolled .nav-links a,
@@ -111,12 +111,6 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 .hero-place{
   margin:0;text-align:right;font-size:.78rem;font-weight:500;line-height:1.8;letter-spacing:.2em;text-transform:uppercase;
 }
-/* phones: the cover fills the whole screen, including the area behind Safari's
-   floating toolbars, so the next section never peeks through below it */
-@supports (height:100lvh){
-  .hero{min-height:100lvh;}
-  .scroll-cue{bottom:calc(28px + (100lvh - 100svh));}
-}
 .hero-size{
   margin:0;display:flex;align-items:center;gap:12px;padding:6px 6px;text-transform:uppercase;
   border-top:1px solid rgba(255,255,255,0.85);border-bottom:1px solid rgba(255,255,255,0.85);
@@ -130,6 +124,18 @@ h1,h2,h3{margin:0;font-weight:inherit;}
   display:flex;flex-direction:column;align-items:center;gap:6px;
   color:rgba(255,255,255,0.8);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
   text-shadow:0 1px 6px rgba(0,0,0,0.5);animation:bob 2.4s infinite ease-in-out;
+}
+/* phones: the cover fills the whole screen, including the area behind Safari's
+   floating toolbars, so the next section never peeks through below it */
+@supports (height:100lvh){
+  .hero{min-height:100lvh;}
+  .scroll-cue{bottom:calc(28px + (100lvh - 100svh));}
+  /* phones: Safari also shows the page below the large viewport (under its floating bar and
+     the home bar), so the cover is made a little taller and the cue moved up by the same amount */
+  @media (max-width:900px){
+    .hero{min-height:calc(100lvh + 90px);}
+    .scroll-cue{bottom:calc(28px + 90px + (100lvh - 100svh));}
+  }
 }
 @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
 
@@ -607,4 +613,11 @@ body.lb-lock{overflow:hidden;}
 .footer-bottom{padding-bottom:calc(28px + env(safe-area-inset-bottom,0px));}
 @media (max-width:760px){
   .footer-bottom{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));}
+}
+
+/* phones: while the cover is on screen, the page background (which Safari uses to colour the
+   status-bar area at the top) takes the sky colour of the photo; back to cream after scrolling */
+html{background:var(--cream);}
+@media (max-width:900px){
+  html.at-top{background:#251e20;}
 }
