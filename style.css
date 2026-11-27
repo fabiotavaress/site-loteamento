@@ -444,7 +444,7 @@ body.lb-lock{overflow:hidden;}
 }
 .cta-contact + .cta-contact{border-left:1px solid rgba(201,162,75,0.35);}
 .cta-contact-name{font-size:.66rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);}
-.cta-contact-phone{font-size:1.25rem;font-weight:300;letter-spacing:.05em;color:var(--gold-soft);white-space:nowrap;transition:color .2s ease;}
+.cta-contact-phone{font-variant-numeric:tabular-nums;font-size:1.25rem;font-weight:300;letter-spacing:.05em;color:var(--gold-soft);white-space:nowrap;transition:color .2s ease;}
 .cta-contact:hover .cta-contact-phone,.cta-contact:focus-visible .cta-contact-phone{color:#fff;}
 
 /* ---------- footer ---------- */
@@ -456,7 +456,7 @@ body.lb-lock{overflow:hidden;}
 .footer-label{font-size:.66rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-text);margin:0 0 12px;}
 .footer-col p{margin:0;}
 .footer-col p:not(.footer-label){color:var(--muted);line-height:1.7;}
-.footer-phone{display:block;width:max-content;font-size:1.1rem;font-weight:300;color:var(--muted);letter-spacing:.04em;white-space:nowrap;}
+.footer-phone{display:block;width:max-content;font-variant-numeric:tabular-nums;font-size:1.1rem;font-weight:300;color:var(--muted);letter-spacing:.04em;white-space:nowrap;}
 .footer-phone + .footer-phone{margin-top:6px;}
 .footer-phone:hover{color:var(--gold-deep);}
 .footer-phone{transition:color .2s ease;}
