@@ -330,6 +330,21 @@
     var color = sec.getAttribute("data-edge") || getComputedStyle(sec).backgroundColor;
     if (color && color !== "rgba(0, 0, 0, 0)" && color !== "transparent") body.style.backgroundColor = color;
   }
+  // if the page is pulled above the resting position (photo behind the clock), glide back to it
+  // as soon as the finger is lifted and the scroll settles
+  if (BLEED) {
+    var touching = false, snapT = null;
+    var snapBack = function () {
+      clearTimeout(snapT);
+      snapT = setTimeout(function () {
+        if (!touching && window.scrollY < BLEED) window.scrollTo({ top: BLEED, left: 0, behavior: "smooth" });
+      }, 120);
+    };
+    window.addEventListener("touchstart", function () { touching = true; clearTimeout(snapT); }, { passive: true });
+    window.addEventListener("touchend", function () { touching = false; snapBack(); }, { passive: true });
+    window.addEventListener("touchcancel", function () { touching = false; snapBack(); }, { passive: true });
+    window.addEventListener("scroll", function () { if (window.scrollY < BLEED) snapBack(); }, { passive: true });
+  }
   if (BLEED && window.scrollY < BLEED && !location.hash) {
     var prevSB = root.style.scrollBehavior;
     root.style.scrollBehavior = "auto";
