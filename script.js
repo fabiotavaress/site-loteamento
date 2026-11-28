@@ -323,12 +323,16 @@
   function updateEdge(scrolled) {
     if (!BLEED) return;
     var body = document.body;
-    if (!scrolled) { body.style.backgroundColor = ""; return; }
+    if (!scrolled) { body.style.backgroundColor = ""; root.style.backgroundColor = ""; return; }
     var el = document.elementFromPoint(12, window.innerHeight - 2);
     var sec = el && el.closest("[data-edge], section, .footer-bottom, footer");
     if (!sec) return;
     var color = sec.getAttribute("data-edge") || getComputedStyle(sec).backgroundColor;
-    if (color && color !== "rgba(0, 0, 0, 0)" && color !== "transparent") body.style.backgroundColor = color;
+    if (color && color !== "rgba(0, 0, 0, 0)" && color !== "transparent") {
+      body.style.backgroundColor = color;
+      // html too: past the end of the page Safari shows the root colour (was a light line under the footer)
+      root.style.backgroundColor = color;
+    }
   }
   // if the page is pulled above the resting position (photo behind the clock), glide back to it
   // as soon as the finger is lifted and the scroll settles
