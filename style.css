@@ -155,7 +155,7 @@ h1,h2,h3{margin:0;font-weight:inherit;}
 @keyframes waPulse{0%{transform:scale(1);opacity:.7;}100%{transform:scale(1.6);opacity:0;}}
 
 /* ---------- sections ---------- */
-.section{padding:84px 0;}
+.section{padding:84px 0;background-color:var(--cream);}
 .section-alt{background:var(--cream-alt);}
 
 /* intro: title on the left, gold hairline, text on the right */

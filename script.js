@@ -316,7 +316,20 @@
     // only when pulled above the bleed is there no photo behind the clock: use the sky colour instead
     root.classList.toggle("above-bleed", BLEED > 0 && y < BLEED - 1);
     if (themeMeta) themeMeta.setAttribute("content", scrolled ? "#f8f6ef" : "#251e20");
+    updateEdge(scrolled);
   };
+  // phones: iOS 26 Safari tints the frosted strip at the bottom of the screen with the body colour,
+  // so the body takes the colour of whatever section is at the bottom edge (no visible seam)
+  function updateEdge(scrolled) {
+    if (!BLEED) return;
+    var body = document.body;
+    if (!scrolled) { body.style.backgroundColor = ""; return; }
+    var el = document.elementFromPoint(12, window.innerHeight - 2);
+    var sec = el && el.closest("[data-edge], section, .footer-bottom, footer");
+    if (!sec) return;
+    var color = sec.getAttribute("data-edge") || getComputedStyle(sec).backgroundColor;
+    if (color && color !== "rgba(0, 0, 0, 0)" && color !== "transparent") body.style.backgroundColor = color;
+  }
   if (BLEED && window.scrollY < BLEED && !location.hash) {
     var prevSB = root.style.scrollBehavior;
     root.style.scrollBehavior = "auto";
