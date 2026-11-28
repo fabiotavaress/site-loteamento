@@ -234,30 +234,82 @@ a.lot:hover,a.lot:focus-visible{background:var(--green-900);border-color:var(--g
 
 /* side panel with the details of the selected lot */
 .lot-panel{
-  position:fixed;top:0;right:0;height:100%;width:340px;max-width:88vw;background:#fff;z-index:90;
-  padding:44px 32px;display:flex;flex-direction:column;gap:16px;
-  box-shadow:-26px 0 60px -26px rgba(19,32,24,0.5);
-  transform:translateX(100%);overflow-y:auto;
+  position:fixed;top:96px;right:24px;width:360px;max-width:calc(100vw - 48px);max-height:calc(100vh - 120px);
+  background:#fff;z-index:90;border-radius:18px;border:1px solid rgba(19,32,24,0.06);
+  padding:22px 28px 28px;display:flex;flex-direction:column;
+  box-shadow:0 30px 60px -28px rgba(19,32,24,0.35),0 2px 8px rgba(19,32,24,0.04);
+  transform:translateX(calc(100% + 40px));opacity:0;overflow-y:auto;
   /* fully hidden when closed: on iPhone (iOS 26) Safari shows the area just below the screen,
      where the closed panel and its shadow used to appear as a line above the toolbar */
-  visibility:hidden;transition:transform .35s ease,visibility 0s linear .35s;
+  visibility:hidden;
+  transition:transform .45s cubic-bezier(.22,.8,.24,1),opacity .3s ease,visibility 0s linear .45s;
 }
-.lot-panel.is-open{transform:translateX(0);visibility:visible;transition:transform .35s ease,visibility 0s;}
+.lot-panel.is-open{
+  transform:translateX(0);opacity:1;visibility:visible;
+  transition:transform .45s cubic-bezier(.22,.8,.24,1),opacity .3s ease,visibility 0s;
+}
+/* header: eyebrow + close button on one row, thin divider below */
 .lot-panel-close{
-  align-self:flex-end;background:none;border:0;font-size:1.9rem;line-height:1;color:var(--muted);
-  cursor:pointer;padding:4px;margin:-4px -4px 4px 0;
+  position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;
+  display:grid;place-items:center;padding:0;border:1px solid var(--line);background:#fff;
+  font-size:1.35rem;line-height:1;color:var(--muted);cursor:pointer;
+  transition:color .2s ease,border-color .2s ease,background .2s ease,transform .2s ease;
 }
-.lot-panel-close:hover{color:var(--green-900);}
-.lot-panel-eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-text);margin:0;}
-.lot-panel-title{font-family:var(--font-body);font-weight:600;font-size:2.2rem;letter-spacing:.01em;color:var(--green-900);margin:0;}
+.lot-panel-close:hover{color:var(--green-900);border-color:var(--gold-soft);background:var(--cream);}
+.lot-panel-close:active{transform:scale(.94);}
+.lot-panel-close:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(201,162,75,0.25);}
+.lot-panel-eyebrow{
+  display:flex;align-items:center;gap:10px;min-height:36px;margin:-6px 44px 0 0;padding-bottom:16px;
+  border-bottom:1px solid var(--line);
+  font-size:.66rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-text);
+}
+.lot-panel-eyebrow::before{content:"";width:18px;height:1px;background:var(--gold);flex:none;}
+/* lot number */
+.lot-panel-title{
+  margin:22px 0 0;display:flex;align-items:baseline;gap:10px;
+  font-family:var(--font-head);font-weight:500;font-size:1.25rem;letter-spacing:.06em;color:var(--muted);
+  font-variant-numeric:lining-nums;line-height:1;
+}
+.lot-panel-title #lotPanelId{font-size:3.6rem;font-weight:500;letter-spacing:.01em;color:var(--green-900);}
+/* status badge */
 .lot-panel-status{
-  align-self:flex-start;padding:6px 14px;font-size:.68rem;font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;background:var(--free);color:var(--green-900);
+  align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+  padding:6px 12px 6px 10px;border-radius:999px;
+  font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  background:rgba(183,205,176,0.28);color:var(--green-700);border:1px solid rgba(39,73,44,0.12);
 }
-.lot-panel-facts{list-style:none;margin:6px 0 0;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px;}
-.lot-panel-facts li{display:flex;justify-content:space-between;font-size:.95rem;color:var(--muted);}
-.lot-panel-facts strong{color:var(--green-900);font-weight:600;}
-.lot-panel-cta{justify-content:center;margin-top:4px;}
+.lot-panel-status::before{content:"";width:6px;height:6px;border-radius:50%;background:#5b9a5a;flex:none;}
+.lot-panel-status.is-sold{background:rgba(239,210,199,0.45);color:var(--sold-ink);border-color:rgba(154,90,72,0.18);}
+.lot-panel-status.is-sold::before{background:#c27a64;}
+/* facts */
+.lot-panel-facts{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--line);}
+.lot-panel-facts li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:15px 0;
+  border-bottom:1px solid var(--line);font-size:.86rem;color:var(--muted);
+}
+.lot-panel-facts strong{color:var(--green-900);font-weight:600;font-size:1rem;letter-spacing:.01em;font-variant-numeric:tabular-nums;white-space:nowrap;}
+/* WhatsApp button */
+.lot-panel-cta{
+  justify-content:center;align-items:center;gap:10px;margin-top:26px;min-height:52px;padding:14px 24px;
+  font-size:.72rem;letter-spacing:.14em;line-height:1.2;white-space:nowrap;
+  box-shadow:0 10px 22px -14px rgba(168,132,58,0.8);
+  transition:background .2s ease,transform .2s ease,box-shadow .2s ease;
+}
+.lot-panel-cta svg{width:18px;height:18px;flex:none;display:block;}
+.lot-panel-cta:hover{transform:translateY(-1px);box-shadow:0 16px 28px -14px rgba(168,132,58,0.85);}
+.lot-panel-cta:active{transform:translateY(0) scale(.98);}
+/* content rises in gently when the panel opens */
+.lot-panel.is-open > *{animation:lpIn .5s cubic-bezier(.22,.8,.24,1) backwards;}
+.lot-panel.is-open > :nth-child(3){animation-delay:.05s;}
+.lot-panel.is-open > :nth-child(4){animation-delay:.09s;}
+.lot-panel.is-open > :nth-child(5){animation-delay:.13s;}
+.lot-panel.is-open > :nth-child(6){animation-delay:.17s;}
+@keyframes lpIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.lot-panel.is-open > .lot-panel-close{animation:none;}
+@media (prefers-reduced-motion:reduce){
+  .lot-panel,.lot-panel.is-open{transition:visibility 0s;}
+  .lot-panel.is-open > *{animation:none;}
+}
 
 /* gallery */
 .gallery{margin-top:72px;}
@@ -524,11 +576,21 @@ body.lb-lock{overflow:hidden;}
   body.menu-open .nav::before{opacity:1;}
   body.menu-open .nav-brand{opacity:1;}
 
+  /* phones: bottom sheet */
   .lot-panel{
-    top:auto;bottom:0;left:0;right:0;width:auto;max-width:none;height:auto;max-height:78vh;
-    border-radius:20px 20px 0 0;transform:translateY(100%);padding:28px 24px 32px;
+    top:auto;bottom:0;left:0;right:0;width:auto;max-width:none;max-height:82vh;
+    border-radius:22px 22px 0 0;border:0;transform:translateY(100%);opacity:1;
+    padding:28px 22px calc(22px + env(safe-area-inset-bottom,0px));
+    box-shadow:0 -18px 40px -20px rgba(19,32,24,0.3);
   }
+  .lot-panel::before{content:"";position:absolute;top:9px;left:50%;width:38px;height:4px;margin-left:-19px;border-radius:4px;background:rgba(19,32,24,0.14);}
   .lot-panel.is-open{transform:translateY(0);}
+  .lot-panel-close{top:16px;right:16px;}
+  .lot-panel-title{margin-top:18px;}
+  .lot-panel-title #lotPanelId{font-size:3.1rem;}
+  .lot-panel-facts{margin-top:20px;}
+  .lot-panel-facts li{padding:13px 0;}
+  .lot-panel-cta{margin-top:22px;}
 
   .sim-grid{grid-template-columns:minmax(0,1fr);gap:0;}
   .sim-col-inputs{display:block;}
